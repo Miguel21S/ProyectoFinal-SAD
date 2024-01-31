@@ -1,11 +1,4 @@
 
-
-const { connect, StringCodec } = require("nats");
-
-const passport = require('passport');
-const GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
-
 const express = require('express');
 const app = express();
 const morgan=require('morgan');
@@ -159,6 +152,13 @@ app.use(express.urlencoded({extended:false}));
 app.use(express.json());
  
 //Nuestro primer WS Get
+app.get('/', (req, res) => {    
+    res.json(
+        {
+            "Title": "API REST DE PETICIONES"
+        }
+    );
+})
 
 app.listen(app.get('port'),()=>{
     console.log(`Server listening on port ${app.get('port')}`);
